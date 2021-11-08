@@ -42,5 +42,4 @@ dependencies {
 
     implementation deps.network.okhttp
     implementation deps.network.okhttp_logging
-    implementation deps.network.okhttp_profiler
 }

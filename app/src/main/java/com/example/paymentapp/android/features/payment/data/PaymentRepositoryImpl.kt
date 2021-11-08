@@ -13,7 +13,6 @@ class PaymentRepositoryImpl @Inject constructor(
 
     override suspend fun getPaymentMethods(): List<DomainPaymentMethod> =
         remote.getPaymentMethods().map {
-            with(mapper) { it.asDomain() }
+            with(mapper) { it.asDomainPaymentMethod() }
         }
-
 }

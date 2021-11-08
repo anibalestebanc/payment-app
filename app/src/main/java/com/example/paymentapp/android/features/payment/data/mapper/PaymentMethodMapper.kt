@@ -6,7 +6,7 @@ import javax.inject.Inject
 
 class PaymentMethodMapper @Inject constructor(){
 
-    fun RemotePaymentMethod.asDomain() = DomainPaymentMethod(
+    fun RemotePaymentMethod.asDomainPaymentMethod() = DomainPaymentMethod(
         id = id,
         name = name,
         status = status,

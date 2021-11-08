@@ -1,6 +1,5 @@
 package com.example.network.android.api
 
-import com.itkacher.okhttpprofiler.OkHttpProfilerInterceptor
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Rfc3339DateJsonAdapter
 import okhttp3.OkHttpClient
@@ -31,9 +30,7 @@ class ApiClientFactory<T> {
     private fun createOkHttpClient(
         isDebug: Boolean,
     ): OkHttpClient {
-        val client = OkHttpClient.Builder()
-        if (isDebug) client.addInterceptor(OkHttpProfilerInterceptor())
-        return client
+        return OkHttpClient.Builder()
             .addInterceptor(createLoggingInterceptor(isDebug))
             .connectTimeout(60, TimeUnit.SECONDS)
             .readTimeout(60, TimeUnit.SECONDS)

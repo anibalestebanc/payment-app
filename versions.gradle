@@ -20,7 +20,6 @@ versions.navigation = '2.3.5'
 versions.retrofit = '2.9.0'
 versions.moshi = '1.5.0'
 versions.okhttp = '4.9.0'
-versions.okhttp_profiler = '1.0.7'
 
 versions.mockito = '3.2.0'
 versions.mockito_inline = '3.12.4'
@@ -39,9 +38,6 @@ deps.hilt_compiler = "com.google.dagger:hilt-compiler:$versions.hilt"
 deps.app_compat = "androidx.appcompat:appcompat:$versions.app_compat"
 deps.material = "com.google.android.material:material:$versions.material"
 deps.constraint_layout = "androidx.constraintlayout:constraintlayout:$versions.constraint_layout"
-
-deps.junit = "junit:junit:$versions.junit"
-deps.ext_junit = "androidx.test.ext:junit:$versions.ext_junit"
 
 def kotlin = [:]
 kotlin.plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
@@ -62,7 +58,6 @@ network.convertor = "com.squareup.retrofit2:converter-moshi:$versions.retrofit"
 network.moshi_adapter = "com.squareup.moshi:moshi-adapters:$versions.moshi"
 network.okhttp = "com.squareup.okhttp3:okhttp:$versions.okhttp"
 network.okhttp_logging = "com.squareup.okhttp3:logging-interceptor:$versions.okhttp"
-network.okhttp_profiler = "com.itkacher.okhttpprofiler:okhttpprofiler:$versions.okhttp_profiler"
 deps.network = network
 
 deps.junit = "junit:junit:$versions.junit"
