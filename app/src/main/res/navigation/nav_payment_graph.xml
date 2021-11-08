@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_payment_graph"
+    app:startDestination="@id/amountToPayFragment">
+
+    <fragment
+        android:id="@+id/amountToPayFragment"
+        android:name="com.example.paymentapp.android.features.payment.ui.amount.AmountFragment"
+        android:label="AmountToPayFragment"
+        tools:layout="@layout/fragment_amount">
+        <action
+            android:id="@+id/action_go_to_payment_method"
+            app:destination="@id/paymentMethodFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/paymentMethodFragment"
+        android:name="com.example.paymentapp.android.features.payment.ui.paymentmethod.PaymentMethodFragment"
+        android:label="PaymentMethodFragment"
+        tools:layout="@layout/fragment_payment_method" >
+
+        <argument
+            android:name="amount"
+            app:argType="integer"
+            android:defaultValue="0" />
+
+    </fragment>
+
+</navigation>
