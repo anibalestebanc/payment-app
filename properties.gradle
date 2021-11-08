@@ -1,0 +1,14 @@
+def propertiesFile = rootProject.file("apikey.properties")
+def properties = new Properties()
+
+if (propertiesFile.exists()) {
+    properties.load(new FileInputStream(propertiesFile))
+} else {
+    properties.setProperty("API_KEY", "\"${System.getenv('API_KEY')}\"")
+}
+
+android {
+    defaultConfig {
+        buildConfigField("String", "API_KEY", properties['API_KEY'])
+    }
+}

@@ -1,7 +1,7 @@
 package com.example.paymentapp.android
 
 import android.app.Application
+import dagger.hilt.android.HiltAndroidApp
 
-class PaymentApp : Application() {
-
-}
+@HiltAndroidApp
+class PaymentApp : Application()

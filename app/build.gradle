@@ -1,9 +1,12 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
-    id 'kotlin-kapt'
     id 'androidx.navigation.safeargs.kotlin'
+    id 'dagger.hilt.android.plugin'
+    id 'kotlin-kapt'
 }
+
+apply from: "$rootDir/properties.gradle"
 
 android {
     compileSdk versions.compile_sdk
@@ -33,13 +36,22 @@ android {
     viewBinding {
         enabled = true
     }
+    kapt {
+        correctErrorTypes true
+    }
 }
 
 dependencies {
+
+    implementation project(":core:network")
+
     implementation deps.kotlin.core_ktx
     implementation deps.app_compat
     implementation deps.material
     implementation deps.constraint_layout
+
+    implementation deps.hilt
+    kapt deps.hilt_compiler
 
     implementation deps.navigation.fragment
     implementation deps.navigation.ui
