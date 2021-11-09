@@ -18,6 +18,7 @@ versions.constraint_layout = '2.1.1'
 versions.navigation = '2.3.5'
 
 versions.retrofit = '2.9.0'
+versions.coil = '1.4.0'
 versions.moshi = '1.5.0'
 versions.okhttp = '4.9.0'
 
@@ -38,6 +39,8 @@ deps.hilt_compiler = "com.google.dagger:hilt-compiler:$versions.hilt"
 deps.app_compat = "androidx.appcompat:appcompat:$versions.app_compat"
 deps.material = "com.google.android.material:material:$versions.material"
 deps.constraint_layout = "androidx.constraintlayout:constraintlayout:$versions.constraint_layout"
+deps.coil = "io.coil-kt:coil:$versions.coil"
+deps.coil_gif = "io.coil-kt:coil-gif:$versions.coil"
 
 def kotlin = [:]
 kotlin.plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"

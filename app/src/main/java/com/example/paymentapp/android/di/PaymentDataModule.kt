@@ -4,6 +4,8 @@ import com.example.network.android.api.ApiClientFactory
 import com.example.network.android.api.NetworkConstants
 import com.example.paymentapp.android.BuildConfig
 import com.example.paymentapp.android.features.payment.data.PaymentRepositoryImpl
+import com.example.paymentapp.android.features.payment.data.mapper.BankMapper
+import com.example.paymentapp.android.features.payment.data.mapper.PayerCostMapper
 import com.example.paymentapp.android.features.payment.data.mapper.PaymentMethodMapper
 import com.example.paymentapp.android.features.payment.data.remote.PaymentRemoteImpl
 import com.example.paymentapp.android.features.payment.data.remote.api.PaymentApi
@@ -36,9 +38,13 @@ object PaymentDataModule {
     @Provides
     fun provideRepository(
         remote: PaymentRemote,
-        mapper: PaymentMethodMapper
+        mapper: PaymentMethodMapper,
+        bankMapper: BankMapper,
+        payerCostMapper: PayerCostMapper
     ): PaymentRepository = PaymentRepositoryImpl(
         remote = remote,
-        mapper = mapper
+        paymentMethodMapper = mapper,
+        bankMapper = bankMapper,
+        payerCostMapper = payerCostMapper
     )
 }

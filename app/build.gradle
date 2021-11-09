@@ -4,6 +4,7 @@ plugins {
     id 'androidx.navigation.safeargs.kotlin'
     id 'dagger.hilt.android.plugin'
     id 'kotlin-kapt'
+    id 'kotlin-parcelize'
 }
 
 apply from: "$rootDir/properties.gradle"
@@ -30,9 +31,11 @@ android {
         sourceCompatibility versions.java
         targetCompatibility versions.java
     }
+
     kotlinOptions {
         jvmTarget = versions.java
     }
+
     buildFeatures{
         viewBinding true
     }
@@ -48,6 +51,8 @@ android {
 }
 
 dependencies {
+    implementation deps.hilt
+    kapt deps.hilt_compiler
 
     implementation project(":core:network")
     implementation project(":common:utils")
@@ -57,11 +62,11 @@ dependencies {
     implementation deps.material
     implementation deps.constraint_layout
 
-    implementation deps.hilt
-    kapt deps.hilt_compiler
-
     implementation deps.navigation.fragment
     implementation deps.navigation.ui
+
+    implementation deps.coil
+    implementation deps.coil_gif
 
     testImplementation deps.junit
     testImplementation deps.mockito_kotlin
