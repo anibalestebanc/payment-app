@@ -3,6 +3,6 @@ package com.example.paymentapp.android.features.payment.presentation.paymentmeth
 sealed class PaymentMethodUiState {
     object DefaultState : PaymentMethodUiState()
     object LoadingState : PaymentMethodUiState()
-    object SuccessState : PaymentMethodUiState()
+    data class SuccessState(val paymentMethodList: List<UiPaymentMethod>) : PaymentMethodUiState()
     data class ErrorState(val error: Throwable) : PaymentMethodUiState()
 }
