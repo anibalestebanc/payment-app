@@ -15,7 +15,7 @@ class GetPaymentMethodsUseCaseTest {
     private val domainPaymentMethodList = PaymentMethodFactory.makeDomainPaymentMethodList(5)
 
     @Test
-    fun `given payment methods, when call to getPaymentMethods, then return domain payment methods`() =
+    fun `given payment methods, when call to invoke, then return domain payment methods`() =
         runBlocking {
             stubRepository()
             val result = useCase.invoke()
