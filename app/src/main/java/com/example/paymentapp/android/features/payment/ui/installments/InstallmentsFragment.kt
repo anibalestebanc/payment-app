@@ -45,6 +45,13 @@ class InstallmentsFragment : Fragment(R.layout.fragment_installments) {
                 installmentMessage = uiPayerCost.recommended_message
             )
         }
+        binding.retryView.retryButton.setOnClickListener {
+            viewModel.getInstallments(
+                amount = args.bank.amount,
+                paymentMethodId = args.bank.paymentMethodId,
+                bankId = args.bank.bankId
+            )
+        }
     }
 
     private fun setupObservers() {
@@ -55,13 +62,13 @@ class InstallmentsFragment : Fragment(R.layout.fragment_installments) {
         when (uiState) {
             InstallmentUiState.DefaultState -> Unit
             InstallmentUiState.LoadingState -> displayLoadingView()
-            is InstallmentUiState.ErrorState -> Unit
+            is InstallmentUiState.ErrorState -> displayErrorView()
             is InstallmentUiState.SuccessState -> displayInstallments(uiState.installmentList)
         }
     }
 
     private fun displayInstallments(installmentList: List<UiPayerCost>) {
-        binding.loadingView.visibility = View.GONE
+        binding.loadingView.root.visibility = View.GONE
         adapter = InstallmentAdapter(installmentList, ::onClickedInstallment)
         binding.recyclerView.adapter = adapter
     }
@@ -71,7 +78,13 @@ class InstallmentsFragment : Fragment(R.layout.fragment_installments) {
     }
 
     private fun displayLoadingView() {
-        binding.loadingView.visibility = View.VISIBLE
+        binding.retryView.root.visibility = View.GONE
+        binding.loadingView.root.visibility = View.VISIBLE
+    }
+
+    private fun displayErrorView() {
+        binding.loadingView.root.visibility = View.GONE
+        binding.retryView.root.visibility = View.VISIBLE
     }
 
     override fun onDestroy() {

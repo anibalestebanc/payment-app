@@ -25,7 +25,9 @@ class BankViewModel @Inject constructor(
         _bankState.value = BankUiState.LoadingState
         try {
             val result = getBanksUseCase.invoke(paymentMethodId)
-            val bankList = result.map { with(bankMapper) { it.asUiBank() } }
+            val bankList = result
+                .map { with(bankMapper) { it.asUiBank() } }
+                .sortedBy { it.name }
             _bankState.value = BankUiState.SuccessState(bankList)
         } catch (error: Throwable) {
             _bankState.value = BankUiState.ErrorState(error)

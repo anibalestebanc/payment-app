@@ -26,7 +26,14 @@ class PaymentMethodFragment : Fragment(R.layout.fragment_payment_method) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentPaymentMethodBinding.bind(view)
+        setupClickListener()
         setupObservers()
+    }
+
+    private fun setupClickListener() {
+        binding.retryView.retryButton.setOnClickListener {
+            viewModel.getPaymentMethods()
+        }
     }
 
     private fun setupObservers() {
@@ -37,13 +44,13 @@ class PaymentMethodFragment : Fragment(R.layout.fragment_payment_method) {
         when (uiState) {
             PaymentMethodUiState.DefaultState -> Unit
             PaymentMethodUiState.LoadingState -> displayLoadingView()
-            is PaymentMethodUiState.ErrorState -> Unit
+            is PaymentMethodUiState.ErrorState -> displayErrorView()
             is PaymentMethodUiState.SuccessState -> displayPaymentMethods(uiState.paymentMethodList)
         }
     }
 
     private fun displayPaymentMethods(paymentMethodList: List<UiPaymentMethod>) {
-        binding.loadingView.visibility = View.GONE
+        binding.loadingView.root.visibility = View.GONE
         val adapter = PaymentMethodAdapter(paymentMethodList, ::paymentMethodClicked)
         binding.recyclerView.adapter = adapter
     }
@@ -52,8 +59,14 @@ class PaymentMethodFragment : Fragment(R.layout.fragment_payment_method) {
         PaymentNavigator.goToBankScreen(binding.root, args.amount, uiPaymentMethod)
     }
 
+    private fun displayErrorView() {
+        binding.loadingView.root.visibility = View.GONE
+        binding.retryView.root.visibility = View.VISIBLE
+    }
+
     private fun displayLoadingView() {
-        binding.loadingView.visibility = View.VISIBLE
+        binding.retryView.root.visibility = View.GONE
+        binding.loadingView.root.visibility = View.VISIBLE
     }
 
     override fun onDestroy() {

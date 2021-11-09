@@ -23,10 +23,12 @@ class PaymentResultFragment : Fragment(R.layout.fragment_payment_result) {
     }
 
     private fun setupView() {
-        binding.amountText.text = "Monto : ${args.installment.amount}"
-        binding.paymentMethodText.text = "Metodo de pago : ${args.installment.paymentMethodName}"
-        binding.bankText.text = "Banco : ${args.installment.bankName}"
-        binding.installmentText.text = "Cuotas : ${args.installment.installmentMessage}"
+        binding.amountText.text = getString(R.string.amount, args.installment.amount.toString())
+        binding.paymentMethodText.text =
+            getString(R.string.payment_method, args.installment.paymentMethodName)
+        binding.bankText.text = getString(R.string.bank, args.installment.bankName)
+        binding.installmentText.text =
+            getString(R.string.installments, args.installment.installmentMessage)
     }
 
     private fun setupClickListener() {

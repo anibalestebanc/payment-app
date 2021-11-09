@@ -26,8 +26,15 @@ class BankFragment : Fragment(R.layout.fragment_bank) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentBankBinding.bind(view)
+        setupClickListener()
         setupObservers()
         viewModel.getBanks(args.paymentMethod.id)
+    }
+
+    private fun setupClickListener() {
+        binding.retryView.retryButton.setOnClickListener {
+            viewModel.getBanks(args.paymentMethod.id)
+        }
     }
 
     private fun setupObservers() {
@@ -38,19 +45,25 @@ class BankFragment : Fragment(R.layout.fragment_bank) {
         when (uiState) {
             BankUiState.DefaultState -> Unit
             BankUiState.LoadingState -> displayLoadingView()
-            is BankUiState.ErrorState -> Unit
+            is BankUiState.ErrorState -> displayErrorView()
             is BankUiState.SuccessState -> displayBanks(uiState.bakList)
         }
     }
 
     private fun displayBanks(bankList: List<UiBank>) {
-        binding.loadingView.visibility = View.GONE
+        binding.loadingView.root.visibility = View.GONE
         val adapter = BankAdapter(bankList, ::bankClicked)
         binding.recyclerView.adapter = adapter
     }
 
     private fun displayLoadingView() {
-        binding.loadingView.visibility = View.VISIBLE
+        binding.retryView.root.visibility = View.GONE
+        binding.loadingView.root.visibility = View.VISIBLE
+    }
+
+    private fun displayErrorView() {
+        binding.loadingView.root.visibility = View.GONE
+        binding.retryView.root.visibility = View.VISIBLE
     }
 
     private fun bankClicked(uiBank: UiBank) {

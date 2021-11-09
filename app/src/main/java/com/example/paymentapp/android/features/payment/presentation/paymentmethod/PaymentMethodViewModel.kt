@@ -29,7 +29,9 @@ class PaymentMethodViewModel @Inject constructor(
         _paymentMethodState.value = PaymentMethodUiState.LoadingState
         try {
             val result = getPaymentMethodsUseCase.invoke()
-            val paymentMethodList = result.map { with(mapper) { it.asUiPaymentMethod() } }
+            val paymentMethodList = result
+                .map { with(mapper) { it.asUiPaymentMethod() } }
+                .sortedBy { it.name }
             _paymentMethodState.value = PaymentMethodUiState.SuccessState(paymentMethodList)
         } catch (error: Throwable) {
             _paymentMethodState.value = PaymentMethodUiState.ErrorState(error)
