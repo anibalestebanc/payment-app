@@ -7,6 +7,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import com.example.paymentapp.android.R
 import com.example.paymentapp.android.databinding.FragmentAmountBinding
+import com.example.paymentapp.android.features.payment.ui.navigation.PaymentNavigator
 
 class AmountFragment : Fragment(R.layout.fragment_amount) {
 
@@ -48,7 +49,7 @@ class AmountFragment : Fragment(R.layout.fragment_amount) {
 
     private fun setupClickListeners() {
         binding.nextButton.setOnClickListener {
-            AmountNavigator.goToPaymentMethod(
+            PaymentNavigator.goToPaymentMethodScreen(
                 binding.root,
                 binding.amountEdit.text.toString().toInt()
             )

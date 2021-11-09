@@ -10,6 +10,8 @@ import com.example.paymentapp.android.R
 import com.example.paymentapp.android.databinding.FragmentPaymentMethodBinding
 import com.example.paymentapp.android.features.payment.presentation.paymentmethod.PaymentMethodViewModel
 import com.example.paymentapp.android.features.payment.presentation.paymentmethod.model.PaymentMethodUiState
+import com.example.paymentapp.android.features.payment.presentation.paymentmethod.model.UiPaymentMethod
+import com.example.paymentapp.android.features.payment.ui.navigation.PaymentNavigator
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -24,8 +26,6 @@ class PaymentMethodFragment : Fragment(R.layout.fragment_payment_method) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentPaymentMethodBinding.bind(view)
-        binding.amount.text = args.amount.toString()
-
         setupObservers()
     }
 
@@ -36,10 +36,24 @@ class PaymentMethodFragment : Fragment(R.layout.fragment_payment_method) {
     private fun renderState(uiState: PaymentMethodUiState) {
         when (uiState) {
             PaymentMethodUiState.DefaultState -> Unit
+            PaymentMethodUiState.LoadingState -> displayLoadingView()
             is PaymentMethodUiState.ErrorState -> Unit
-            PaymentMethodUiState.LoadingState -> Unit
-            PaymentMethodUiState.SuccessState -> Unit
+            is PaymentMethodUiState.SuccessState -> displayPaymentMethods(uiState.paymentMethodList)
         }
+    }
+
+    private fun displayPaymentMethods(paymentMethodList: List<UiPaymentMethod>) {
+        binding.loadingView.visibility = View.GONE
+        val adapter = PaymentMethodAdapter(paymentMethodList, ::paymentMethodClicked)
+        binding.recyclerView.adapter = adapter
+    }
+
+    private fun paymentMethodClicked(uiPaymentMethod: UiPaymentMethod) {
+        PaymentNavigator.goToBankScreen(binding.root, args.amount, uiPaymentMethod)
+    }
+
+    private fun displayLoadingView() {
+        binding.loadingView.visibility = View.VISIBLE
     }
 
     override fun onDestroy() {
