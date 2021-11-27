@@ -6,7 +6,7 @@ buildscript {
     }
     dependencies {
         classpath deps.android_gradle_plugin
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.31"
+        classpath deps.kotlin.plugin
         classpath deps.save_args_plugin
         classpath deps.android_hilt_plugin
     }

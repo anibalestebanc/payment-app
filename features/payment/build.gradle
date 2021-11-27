@@ -7,12 +7,11 @@ plugins {
     id 'kotlin-parcelize'
 }
 android {
-    compileSdkVersion 31
-
+    compileSdkVersion versions.compile_sdk
     defaultConfig {
         applicationId "com.example.android.payment"
-        minSdkVersion 21
-        targetSdkVersion 31
+        minSdkVersion versions.min_sdk
+        targetSdkVersion versions.target_sdk
         versionCode 1
         versionName "1.0"
 
