@@ -15,7 +15,10 @@
             <option value="$PROJECT_DIR$/common" />
             <option value="$PROJECT_DIR$/common/utils" />
             <option value="$PROJECT_DIR$/core" />
+            <option value="$PROJECT_DIR$/core/navigation" />
             <option value="$PROJECT_DIR$/core/network" />
+            <option value="$PROJECT_DIR$/features" />
+            <option value="$PROJECT_DIR$/features/payment" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

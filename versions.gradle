@@ -53,6 +53,7 @@ deps.kotlin = kotlin
 def navigation = [:]
 navigation.fragment = "androidx.navigation:navigation-fragment-ktx:$versions.navigation"
 navigation.ui = "androidx.navigation:navigation-ui-ktx:$versions.navigation"
+navigation.dynamic_features ="androidx.navigation:navigation-dynamic-features-fragment:$versions.navigation"
 deps.navigation = navigation
 
 def network = [:]

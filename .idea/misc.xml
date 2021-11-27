@@ -3,8 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.29384615384615387" />
         <entry key="app/src/main/res/drawable/ic_check.xml" value="0.29384615384615387" />
         <entry key="app/src/main/res/drawable/ic_image_placeholder.xml" value="0.2984375" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.29384615384615387" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.14895833333333333" />
         <entry key="app/src/main/res/layout/fragment_amount.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_amount_to_pay.xml" value="0.14895833333333333" />
@@ -17,6 +19,15 @@
         <entry key="app/src/main/res/layout/item_payment_method.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/loading_view.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/retry_error_view.xml" value="0.28229166666666666" />
+        <entry key="features/payment/src/main/res/drawable/asx.xml" value="0.29384615384615387" />
+        <entry key="features/payment/src/main/res/drawable/ic_image_placeholder.xml" value="0.29384615384615387" />
+        <entry key="features/payment/src/main/res/layout/aasd.xml" value="0.28229166666666666" />
+        <entry key="features/payment/src/main/res/layout/fragment_amount.xml" value="0.28229166666666666" />
+        <entry key="features/payment/src/main/res/layout/fragment_bank.xml" value="0.28229166666666666" />
+        <entry key="features/payment/src/main/res/layout/fragment_installments.xml" value="0.275" />
+        <entry key="features/payment/src/main/res/layout/fragment_payment_method.xml" value="0.28229166666666666" />
+        <entry key="features/payment/src/main/res/layout/fragment_payment_result.xml" value="0.28229166666666666" />
+        <entry key="features/payment/src/main/res/layout/retry_error_view.xml" value="0.28229166666666666" />
       </map>
     </option>
   </component>

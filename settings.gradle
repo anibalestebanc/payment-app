@@ -9,3 +9,5 @@ rootProject.name = "PaymentApp"
 include ':app'
 include ':core:network'
 include ':common:utils'
+include ':core:navigation'
+include ':features:payment'

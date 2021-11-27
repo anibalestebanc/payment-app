@@ -36,7 +36,8 @@ android {
         jvmTarget = versions.java
     }
 
-    buildFeatures{
+    buildFeatures {
+        dataBinding true
         viewBinding true
     }
 
@@ -48,14 +49,15 @@ android {
     kapt {
         correctErrorTypes true
     }
+    dynamicFeatures = [':features:payment']
 }
 
 dependencies {
     implementation deps.hilt
     kapt deps.hilt_compiler
 
-    implementation project(":core:network")
-    implementation project(":common:utils")
+    api project(":core:network")
+    api project(":common:utils")
 
     implementation deps.kotlin.core_ktx
     implementation deps.app_compat
@@ -64,6 +66,7 @@ dependencies {
 
     implementation deps.navigation.fragment
     implementation deps.navigation.ui
+    implementation deps.navigation.dynamic_features
 
     implementation deps.coil
     implementation deps.coil_gif

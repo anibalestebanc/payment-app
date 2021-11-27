@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_graph"
+    app:startDestination="@id/payment_feature">
+
+    <include-dynamic
+        android:id="@+id/payment_feature"
+        android:name="com.example.android.payment"
+        app:graphResName="payment_graph"
+        app:moduleName="payment" />
+
+</navigation>
+

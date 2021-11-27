@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/amount_fragment">
+
+    <fragment
+        android:id="@+id/amount_fragment"
+        android:name="com.example.android.payment.ui.amount.AmountFragment"
+        android:label="AmountToPayFragment"
+        tools:layout="@layout/fragment_amount">
+        <action
+            android:id="@+id/action_go_to_payment_method"
+            app:destination="@id/payment_method_fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/payment_method_fragment"
+        android:name="com.example.android.payment.ui.paymentmethod.PaymentMethodFragment"
+        android:label="PaymentMethodFragment"
+        tools:layout="@layout/fragment_payment_method">
+
+        <argument
+            android:name="amount"
+            android:defaultValue="0"
+            app:argType="integer" />
+
+        <action
+            android:id="@+id/action_go_to_bankFragment"
+            app:destination="@id/bank_fragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/bank_fragment"
+        android:name="com.example.android.payment.ui.bank.BankFragment"
+        android:label="BankFragment"
+        tools:layout="@layout/fragment_bank">
+        <argument
+            android:name="paymentMethod"
+            app:argType="com.example.android.payment.presentation.paymentmethod.model.UiPaymentMethodSelected" />
+        <action
+            android:id="@+id/action_go_to_installmentsFragment"
+            app:destination="@id/installments_fragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/installments_fragment"
+        android:name="com.example.android.payment.ui.installments.InstallmentsFragment"
+        android:label="InstallmentsFragment"
+        tools:layout="@layout/fragment_installments">
+        <argument
+            android:name="bank"
+            app:argType="com.example.android.payment.presentation.bank.model.UiBankSelected" />
+        <action
+            android:id="@+id/action_go_to_paymentResultFragment"
+            app:destination="@id/payment_result_fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/payment_result_fragment"
+        android:name="com.example.android.payment.ui.paymentresult.PaymentResultFragment"
+        android:label="PaymentResultFragment"
+        tools:layout="@layout/fragment_payment_result">
+        <argument
+            android:name="installment"
+            app:argType="com.example.android.payment.presentation.installments.model.UiInstallmentSelected" />
+
+        <action
+            android:id="@+id/action_go_to_amount_fragment"
+            app:destination="@id/amount_fragment" />
+
+    </fragment>
+
+</navigation>
