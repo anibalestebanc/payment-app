@@ -1,4 +1,4 @@
-package com.example.paymentapp.android.di
+package com.example.android.paymentapp.di
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

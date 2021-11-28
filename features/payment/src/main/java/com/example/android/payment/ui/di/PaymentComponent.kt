@@ -4,7 +4,7 @@ import android.content.Context
 import com.example.android.payment.ui.bank.BankFragment
 import com.example.android.payment.ui.installments.InstallmentsFragment
 import com.example.android.payment.ui.paymentmethod.PaymentMethodFragment
-import com.example.paymentapp.android.di.DaggerDependencies
+import com.example.android.paymentapp.di.DaggerDependencies
 import dagger.BindsInstance
 import dagger.Component
 

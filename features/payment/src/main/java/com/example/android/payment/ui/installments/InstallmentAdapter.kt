@@ -24,7 +24,7 @@ class InstallmentAdapter(
 
     override fun getItemCount(): Int = list.size
 
-    private fun unselectAllItems(uiPayerCost: com.example.android.payment.presentation.installments.model.UiPayerCost) {
+    private fun unselectAllItems(uiPayerCost: UiPayerCost) {
         for ((index, payerCost) in list.withIndex()) {
             if (payerCost.installments != uiPayerCost.installments && payerCost.isSelected) {
                 payerCost.isSelected = false
@@ -33,7 +33,7 @@ class InstallmentAdapter(
         }
     }
 
-    fun getInstallmentSelected(): com.example.android.payment.presentation.installments.model.UiPayerCost {
+    fun getInstallmentSelected(): UiPayerCost {
         for (payerCost in list.iterator()) {
             if (payerCost.isSelected) {
                 return payerCost
@@ -46,10 +46,10 @@ class InstallmentAdapter(
     inner class InstallmentViewHolder(private val binding: ItemInstallmentBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(uiPayerCost: com.example.android.payment.presentation.installments.model.UiPayerCost) {
+        fun bind(uiPayerCost: UiPayerCost) {
             binding.installmentDescription.text = uiPayerCost.recommended_message
             binding.instalmentRadioButton.isChecked = uiPayerCost.isSelected
-            binding.instalmentRadioButton.setOnCheckedChangeListener { buttonView, isChecked ->
+            binding.instalmentRadioButton.setOnCheckedChangeListener { _, isChecked ->
                 uiPayerCost.isSelected = isChecked
                 if (isChecked) {
                     onClickInstalment(true)

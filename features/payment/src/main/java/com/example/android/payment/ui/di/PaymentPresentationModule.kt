@@ -5,8 +5,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.android.payment.presentation.bank.BankViewModel
 import com.example.android.payment.presentation.installments.InstallmentsViewModel
 import com.example.android.payment.presentation.paymentmethod.PaymentMethodViewModel
-import com.example.paymentapp.android.di.ViewModelFactory
-import com.example.paymentapp.android.di.ViewModelKey
+import com.example.android.paymentapp.di.ViewModelFactory
+import com.example.android.paymentapp.di.ViewModelKey
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.migration.DisableInstallInCheck

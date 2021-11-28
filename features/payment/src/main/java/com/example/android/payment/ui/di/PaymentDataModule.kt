@@ -10,7 +10,7 @@ import com.example.android.payment.data.source.PaymentRemote
 import com.example.android.payment.domain.repository.PaymentRepository
 import com.example.network.android.api.ApiClientFactory
 import com.example.network.android.api.NetworkConstants
-import com.example.paymentapp.android.BuildConfig
+import com.example.android.paymentapp.BuildConfig
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.migration.DisableInstallInCheck

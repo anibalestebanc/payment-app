@@ -1,11 +1,11 @@
-package com.example.paymentapp.android.di
+package com.example.android.paymentapp.di
 
-import dagger.Module
+import dagger.hilt.EntryPoint
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 
-@Module
+@EntryPoint
 @InstallIn(SingletonComponent::class)
-object PaymentModule {
+interface DaggerDependencies {
 
 }

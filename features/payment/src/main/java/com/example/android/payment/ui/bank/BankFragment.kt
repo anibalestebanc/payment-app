@@ -13,7 +13,7 @@ import com.example.android.payment.presentation.bank.model.BankUiState
 import com.example.android.payment.presentation.bank.model.UiBank
 import com.example.android.payment.ui.di.DaggerPaymentComponent
 import com.example.android.payment.ui.navigation.PaymentNavigator
-import com.example.paymentapp.android.di.DaggerDependencies
+import com.example.android.paymentapp.di.DaggerDependencies
 import com.example.utils.android.android.BaseBindingFragment
 import dagger.hilt.android.EntryPointAccessors
 import javax.inject.Inject

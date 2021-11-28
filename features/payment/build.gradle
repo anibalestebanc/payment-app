@@ -40,6 +40,9 @@ dependencies {
     implementation deps.hilt
     kapt deps.hilt_compiler
 
+    implementation deps.dagger
+    kapt deps.hilt_compiler
+
     implementation deps.kotlin.core_ktx
     implementation deps.app_compat
     implementation deps.material
