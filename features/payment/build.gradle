@@ -48,6 +48,14 @@ dependencies {
     implementation deps.material
     implementation deps.constraint_layout
 
+    implementation deps.kotlin.coroutines
+    implementation deps.kotlin.coroutines_core
+
+    implementation deps.lifecycle.view_model
+    implementation deps.lifecycle.live_data
+    implementation deps.lifecycle.runtime
+    kapt deps.lifecycle.compiler
+
     implementation deps.coil
     implementation deps.coil_gif
 

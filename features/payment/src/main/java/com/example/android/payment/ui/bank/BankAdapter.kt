@@ -3,6 +3,7 @@ package com.example.android.payment.ui.bank
 import android.os.Build
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.ImageLoader
 import coil.decode.GifDecoder
@@ -11,11 +12,11 @@ import coil.request.ImageRequest
 import com.example.android.payment.R
 import com.example.android.payment.databinding.ItemBankBinding
 import com.example.android.payment.presentation.bank.model.UiBank
+import com.example.android.payment.ui.bank.BankDiffCallback.BANK_DIFF_UTIL
 
 class BankAdapter(
-    private val list: List<UiBank>,
     private val onClickListener: (uiBank: UiBank) -> Unit
-) : RecyclerView.Adapter<BankAdapter.BankViewHolder>() {
+) : ListAdapter<UiBank, BankAdapter.BankViewHolder>(BANK_DIFF_UTIL) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BankViewHolder {
         val binding = ItemBankBinding
@@ -24,10 +25,10 @@ class BankAdapter(
     }
 
     override fun onBindViewHolder(holder: BankViewHolder, position: Int) {
-        holder.bind(list[position])
+        holder.bind(currentList[position])
     }
 
-    override fun getItemCount(): Int = list.size
+    override fun getItemCount(): Int = currentList.size
 
     inner class BankViewHolder(private val binding: ItemBankBinding) :
         RecyclerView.ViewHolder(binding.root) {

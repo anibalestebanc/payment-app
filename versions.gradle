@@ -8,19 +8,20 @@ versions.java = JavaVersion.VERSION_11
 
 versions.gradle = '7.0.3'
 versions.kotlin = '1.5.30'
+versions.lifecycle = '2.4.0'
 versions.kotlin_core = '1.7.0'
 versions.hilt = '2.40.2'
 
 versions.app_compat = '1.4.0'
 versions.material = '1.4.0'
-versions.coroutines = '1.5.0'
+versions.coroutines = '1.5.2'
 versions.arch_core = '2.1.0'
 versions.constraint_layout = '2.1.2'
 versions.navigation = '2.3.5'
 
 versions.retrofit = '2.9.0'
 versions.coil = '1.4.0'
-versions.moshi = '1.12.0'
+versions.moshi = '1.5.0'
 versions.okhttp = '4.9.0'
 
 versions.mockito = '4.0.0'
@@ -53,6 +54,13 @@ kotlin.coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.
 kotlin.coroutines_core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$versions.coroutines"
 kotlin.coroutines_test = "org.jetbrains.kotlinx:kotlinx-coroutines-test:$versions.coroutines"
 deps.kotlin = kotlin
+
+def lifecycle = [:]
+lifecycle.view_model = "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.lifecycle"
+lifecycle.live_data = "androidx.lifecycle:lifecycle-livedata-ktx:$versions.lifecycle"
+lifecycle.runtime = "androidx.lifecycle:lifecycle-runtime-ktx:$versions.lifecycle"
+lifecycle.compiler = "androidx.lifecycle:lifecycle-compiler:$versions.lifecycle"
+deps.lifecycle = lifecycle
 
 def navigation = [:]
 navigation.fragment = "androidx.navigation:navigation-fragment-ktx:$versions.navigation"

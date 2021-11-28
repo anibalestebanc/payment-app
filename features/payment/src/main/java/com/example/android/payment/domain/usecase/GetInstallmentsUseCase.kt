@@ -6,7 +6,6 @@ import javax.inject.Inject
 class GetInstallmentsUseCase @Inject constructor(
     private val repository: PaymentRepository
 ) {
-    suspend fun invoke(
-        amount: Int, paymentMethodId: String, bankId: String
-    ) = repository.getInstallments(amount, paymentMethodId, bankId)
+    fun invoke(amount: Int, paymentMethodId: String, bankId: String) =
+        repository.getInstallments(amount, paymentMethodId, bankId)
 }

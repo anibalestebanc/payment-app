@@ -64,6 +64,13 @@ dependencies {
     implementation deps.material
     implementation deps.constraint_layout
 
+    implementation deps.kotlin.coroutines
+    implementation deps.kotlin.coroutines_core
+
+    implementation deps.lifecycle.view_model
+    implementation deps.lifecycle.live_data
+    implementation deps.lifecycle.runtime
+
     implementation deps.navigation.fragment
     implementation deps.navigation.ui
     implementation deps.navigation.dynamic_features

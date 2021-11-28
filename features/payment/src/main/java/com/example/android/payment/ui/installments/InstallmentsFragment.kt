@@ -3,8 +3,7 @@ package com.example.android.payment.ui.installments
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.*
 import androidx.navigation.fragment.navArgs
 import com.example.android.payment.R
 import com.example.android.payment.databinding.FragmentInstallmentsBinding
@@ -16,6 +15,8 @@ import com.example.android.payment.ui.navigation.PaymentNavigator
 import com.example.android.paymentapp.di.DaggerDependencies
 import com.example.utils.android.android.BaseBindingFragment
 import dagger.hilt.android.EntryPointAccessors
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class InstallmentsFragment : BaseBindingFragment<FragmentInstallmentsBinding>(
@@ -28,7 +29,7 @@ class InstallmentsFragment : BaseBindingFragment<FragmentInstallmentsBinding>(
     private val args: InstallmentsFragmentArgs by navArgs()
     private val viewModel: InstallmentsViewModel by viewModels { viewModelFactory }
 
-    private lateinit var adapter: InstallmentAdapter
+    private val installmentAdapter = InstallmentAdapter(::onClickedInstallment)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,6 +48,7 @@ class InstallmentsFragment : BaseBindingFragment<FragmentInstallmentsBinding>(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupObservers()
+        setupRecyclerView()
         setupClickListener()
         viewModel.getInstallments(
             amount = args.bank.amount,
@@ -55,9 +57,15 @@ class InstallmentsFragment : BaseBindingFragment<FragmentInstallmentsBinding>(
         )
     }
 
+    private fun setupRecyclerView() {
+        binding.recyclerView.apply {
+            adapter = installmentAdapter
+        }
+    }
+
     private fun setupClickListener() {
         binding.payButton.setOnClickListener {
-            val uiPayerCost = adapter.getInstallmentSelected()
+            val uiPayerCost = installmentAdapter.getInstallmentSelected()
             PaymentNavigator.goToPaymentResultScreen(
                 view = binding.root,
                 uiBankSelected = args.bank,
@@ -74,7 +82,11 @@ class InstallmentsFragment : BaseBindingFragment<FragmentInstallmentsBinding>(
     }
 
     private fun setupObservers() {
-        viewModel.installmentState.observe(viewLifecycleOwner, Observer(::renderUiState))
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.installmentState.collect(::renderUiState)
+            }
+        }
     }
 
     private fun renderUiState(uiState: InstallmentUiState) {
@@ -90,8 +102,7 @@ class InstallmentsFragment : BaseBindingFragment<FragmentInstallmentsBinding>(
 
     private fun displayInstallments(installmentList: List<UiPayerCost>) {
         binding.loadingView.root.visibility = View.GONE
-        adapter = InstallmentAdapter(installmentList, ::onClickedInstallment)
-        binding.recyclerView.adapter = adapter
+        installmentAdapter.submitList(installmentList)
     }
 
     private fun onClickedInstallment(isSelected: Boolean) {

@@ -3,6 +3,7 @@ package com.example.android.payment.ui.paymentmethod
 import android.os.Build.VERSION.SDK_INT
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.ImageLoader
 import coil.decode.GifDecoder
@@ -11,12 +12,13 @@ import coil.request.ImageRequest
 import com.example.android.payment.R
 import com.example.android.payment.databinding.ItemPaymentMethodBinding
 import com.example.android.payment.presentation.paymentmethod.model.UiPaymentMethod
+import com.example.android.payment.ui.paymentmethod.PaymentMethodDiffCallback.PAYMENT_METHOD_DIFF_UTIL
 
 class PaymentMethodAdapter(
-    private val list: List<UiPaymentMethod>,
     private val onClickListener: (uiPaymentMethod: UiPaymentMethod) -> Unit
-) :
-    RecyclerView.Adapter<PaymentMethodAdapter.PaymentMethodViewHolder>() {
+) : ListAdapter<UiPaymentMethod, PaymentMethodAdapter.PaymentMethodViewHolder>(
+    PAYMENT_METHOD_DIFF_UTIL
+) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PaymentMethodViewHolder {
         val binding = ItemPaymentMethodBinding
@@ -25,15 +27,15 @@ class PaymentMethodAdapter(
     }
 
     override fun onBindViewHolder(holder: PaymentMethodViewHolder, position: Int) {
-        holder.bind(list[position])
+        holder.bind(currentList[position])
     }
 
-    override fun getItemCount(): Int = list.size
+    override fun getItemCount(): Int = currentList.size
 
     inner class PaymentMethodViewHolder(private val binding: ItemPaymentMethodBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(paymentMethod: com.example.android.payment.presentation.paymentmethod.model.UiPaymentMethod) {
+        fun bind(paymentMethod: UiPaymentMethod) {
             binding.paymentMethodName.text = paymentMethod.name
             val imageLoader = ImageLoader.Builder(binding.root.context)
                 .componentRegistry {
