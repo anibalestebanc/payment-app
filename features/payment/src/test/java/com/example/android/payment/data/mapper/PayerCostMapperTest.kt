@@ -5,11 +5,11 @@ import org.junit.Assert.assertEquals
 import org.junit.Test
 
 class PayerCostMapperTest {
-    private val mapper = com.example.android.payment.data.mapper.PayerCostMapper()
+    private val mapper = PayerCostMapper()
 
     @Test
     fun `given payerCost, when call to asDomainPayerCost, then return domain payerCost`() {
-        val remotePayerCost = com.example.android.payment.factory.PayerCostFactory.makeRemotePayerCost()
+        val remotePayerCost = PayerCostFactory.makeRemotePayerCost()
         val domainPayerCost = with(mapper) { remotePayerCost.asDomainPayerCost() }
         assertEquals("discount_rate", remotePayerCost.discount_rate, domainPayerCost.discount_rate)
         assertEquals(

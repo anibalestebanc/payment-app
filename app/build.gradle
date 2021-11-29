@@ -57,6 +57,7 @@ dependencies {
     kapt deps.hilt_compiler
 
     api project(":core:network")
+    api project(":core:navigation")
     api project(":common:utils")
 
     implementation deps.kotlin.core_ktx

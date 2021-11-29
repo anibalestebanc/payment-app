@@ -6,7 +6,7 @@ import com.example.utils.android.testing.RandomFactory
 
 object PayerCostFactory {
 
-    fun makeRemotePayerCost() = com.example.android.payment.data.remote.model.RemotePayerCost(
+    fun makeRemotePayerCost() = RemotePayerCost(
         discount_rate = RandomFactory.generateInt(),
         installment_amount = RandomFactory.generateFloat(),
         installment_rate = RandomFactory.generateFloat(),
@@ -28,7 +28,7 @@ object PayerCostFactory {
         RandomFactory.generateString()
     }
 
-    fun makeDomainPayerCost() = com.example.android.payment.domain.model.DomainPayerCost(
+    fun makeDomainPayerCost() = DomainPayerCost(
         discount_rate = RandomFactory.generateInt(),
         installment_amount = RandomFactory.generateFloat(),
         installment_rate = RandomFactory.generateFloat(),

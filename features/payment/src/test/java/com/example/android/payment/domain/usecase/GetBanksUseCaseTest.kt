@@ -1,30 +1,26 @@
 package com.example.android.payment.domain.usecase
 
-import com.example.android.payment.domain.repository.PaymentRepository
 import com.example.android.payment.factory.BankFactory
+import com.example.android.payment.fake.FakePaymentRepository
 import com.example.utils.android.testing.RandomFactory
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
 import org.junit.Test
-import org.mockito.kotlin.mock
-import org.mockito.kotlin.whenever
+
 
 class GetBanksUseCaseTest {
-    private val mockRepository = mock<com.example.android.payment.domain.repository.PaymentRepository>()
-    private val useCase = com.example.android.payment.domain.usecase.GetBanksUseCase(mockRepository)
-
-    private val paymentMethodId = RandomFactory.generateString()
-    private val domainBankList = com.example.android.payment.factory.BankFactory.makeDomainBankList(5)
+    private val fakeRepository = FakePaymentRepository()
+    private val useCase = GetBanksUseCase(fakeRepository)
 
     @Test
     fun `given banks, when call to invoke, then return domain bank list`() =
         runBlocking {
-            stubRepository()
-            val result = useCase.invoke(paymentMethodId)
-            assertEquals(domainBankList, result)
+            val domainBankList = BankFactory.makeDomainBankList(5)
+            val paymentMethodId = RandomFactory.generateString()
+            fakeRepository.domainBanks = domainBankList
+            useCase.invoke(paymentMethodId).collect {
+                assertEquals(domainBankList, it)
+            }
         }
-
-    private fun stubRepository() = runBlocking {
-        whenever(mockRepository.getBanks(paymentMethodId)).thenReturn(domainBankList)
-    }
 }

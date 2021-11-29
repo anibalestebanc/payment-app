@@ -6,11 +6,11 @@ import org.junit.Test
 
 
 class PaymentMethodMapperTest {
-    private val mapper = com.example.android.payment.data.mapper.PaymentMethodMapper()
+    private val mapper = PaymentMethodMapper()
 
     @Test
     fun `given payment method, when call to asDomainPaymentMethod, then return domain payment method`() {
-        val remotePaymentMethod = com.example.android.payment.factory.PaymentMethodFactory.makeRemotePaymentMethod()
+        val remotePaymentMethod = PaymentMethodFactory.makeRemotePaymentMethod()
         val domainPaymentMethod = with(mapper) { remotePaymentMethod.asDomainPaymentMethod() }
         assertEquals("id", remotePaymentMethod.id, domainPaymentMethod.id)
         assertEquals("name", remotePaymentMethod.name, domainPaymentMethod.name)

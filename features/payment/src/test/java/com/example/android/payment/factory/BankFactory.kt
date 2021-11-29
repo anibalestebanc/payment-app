@@ -6,7 +6,7 @@ import com.example.utils.android.testing.RandomFactory
 
 object BankFactory {
 
-    fun makeRemoteBank() = com.example.android.payment.data.remote.model.RemoteBank(
+    fun makeRemoteBank() = RemoteBank(
         id = RandomFactory.generateString(),
         name = RandomFactory.generateString(),
         status = RandomFactory.generateString(),
@@ -15,11 +15,11 @@ object BankFactory {
         thumbnail = RandomFactory.generateString()
     )
 
-    fun makeRemoteBankList(count: Int): List<com.example.android.payment.data.remote.model.RemoteBank> = (0..count).map {
+    fun makeRemoteBankList(count: Int): List<RemoteBank> = (0..count).map {
         makeRemoteBank()
     }
 
-    fun makeDomainBank() = com.example.android.payment.domain.model.DomainBank(
+    fun makeDomainBank() = DomainBank(
         id = RandomFactory.generateString(),
         name = RandomFactory.generateString(),
         status = RandomFactory.generateString(),
@@ -28,8 +28,7 @@ object BankFactory {
         thumbnail = RandomFactory.generateString()
     )
 
-    fun makeDomainBankList(count: Int): List<com.example.android.payment.domain.model.DomainBank> = (0..count).map {
+    fun makeDomainBankList(count: Int): List<DomainBank> = (0..count).map {
         makeDomainBank()
     }
-
 }

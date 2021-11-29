@@ -4,7 +4,7 @@ import com.example.android.payment.data.remote.model.RemoteInstallment
 import com.example.utils.android.testing.RandomFactory
 
 object InstallmentFactory {
-    fun makeRemoteInstallment() = com.example.android.payment.data.remote.model.RemoteInstallment(
+    fun makeRemoteInstallment() = RemoteInstallment(
         issuer = IssuerFactory.makeRemoteIssuer(),
         payer_costs = PayerCostFactory.makeRemotePayerCostList(5),
         payment_type_id = RandomFactory.generateString(),

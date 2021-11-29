@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation>
+
+    <!--    //nav_plp_graph-->
+
+    <!-- <include-dynamic
+         android:id="@+id/payment_feature"
+         android:name="com.example.android.payment"
+         app:graphResName="payment_graph"
+         app:moduleName="payment" />-->
+
+</navigation>
