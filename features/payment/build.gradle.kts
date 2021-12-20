@@ -36,15 +36,22 @@ android {
 
 dependencies {
     implementation(project(Modules.APP))
+
     addDynamicFeatureDependencies()
+
+    implementation(Deps.FRAGMENT_KTX)
+
     addAndroidUiDependencies()
+
     addCoroutinesDependency()
+
     addLifeCycleDependencies()
 
     implementation(Deps.COIL)
     implementation(Deps.COIL_GIF)
 
     addNavigationDependencies()
+
     addUnitTestDependencies()
     addAndroidTestDependencies()
 }

@@ -5,6 +5,8 @@ object Deps {
     const val APP_COMPAT = "androidx.appcompat:appcompat:${Version.APP_COMPAT}"
     const val MATERIAL = "com.google.android.material:material:${Version.MATERIAL}"
     const val CONSTRAINT_LAYOUT = "androidx.constraintlayout:constraintlayout:${Version.CONSTRAINT_LAYOUT}"
+    const val FRAGMENT_KTX = "androidx.fragment:fragment-ktx:${Version.FRAGMENT}"
+
     const val COIL = "io.coil-kt:coil:${Version.COIL}"
     const val COIL_GIF = "io.coil-kt:coil-gif:${Version.COIL}"
 

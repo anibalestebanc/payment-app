@@ -1,3 +1,5 @@
+import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
+
 plugins {
     id(Plugins.ANDROID_APPLICATION)
     id(Plugins.KOTLIN_ANDROID)
@@ -7,9 +9,9 @@ plugins {
     id(Plugins.KOTLIN_PARCELIZE)
 }
 
-apply{
-   from("$rootDir/properties.gradle")
-}
+val apiKey : String = gradleLocalProperties(rootDir)
+    .getProperty("API_KEY")
+
 
 android {
     compileSdk = AndroidVersions.COMPILE_SDK
@@ -21,6 +23,8 @@ android {
         versionName = AndroidVersions.VERSION_NAME
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "API_KEY", apiKey)
     }
 
     buildTypes {
@@ -54,6 +58,7 @@ android {
     kapt {
         correctErrorTypes = true
     }
+
     dynamicFeatures.apply {
         add(Modules.DynamicFeatures.PAYMENT)
     }
@@ -63,6 +68,10 @@ dependencies {
     addAppModuleDependencies()
     addAndroidUiDependencies()
     addNavigationDependencies()
+
+    addCoroutinesDependency()
+
+    addLifeCycleDependencies()
 
     api(project(Modules.AndroidLibraries.NETWORK))
     api(project(Modules.AndroidLibraries.NAVIGATION))

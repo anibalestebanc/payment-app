@@ -9,7 +9,7 @@ object AndroidVersions {
     const val COMPILE_SDK = 31
     const val TARGET_SDK = 31
     const val VERSION_CODE = 1
-    const val VERSION_NAME = "1.0.0"
+    const val VERSION_NAME = "1.0"
 
     const val APPLICATION_ID = "com.example.paymentapp.android"
 }
@@ -18,6 +18,7 @@ object Version {
     const val LIFE_CYCLE = "2.4.0"
     const val KOTLIN_CORE = "1.7.0"
     const val HILT = "2.40.2"
+    const val FRAGMENT = "1.4.0"
 
     const val APP_COMPAT = "1.4.0"
     const val MATERIAL = "1.4.0"
