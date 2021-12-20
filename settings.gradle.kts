@@ -1,3 +1,4 @@
+rootProject.name = "PaymentApp"
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
@@ -5,9 +6,10 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "PaymentApp"
-include ':app'
-include ':core:network'
-include ':common:utils'
-include ':core:navigation'
-include ':features:payment'
+include(
+    ":app",
+    ":core:network",
+    ":common:utils",
+    ":core:navigation",
+    ":features:payment"
+)

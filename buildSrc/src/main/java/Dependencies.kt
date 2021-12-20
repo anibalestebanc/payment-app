@@ -3,7 +3,7 @@ object Deps {
     const val KOTLIN_CORE_KTX = "androidx.core:core-ktx:${Version.KOTLIN_CORE}"
 
     const val APP_COMPAT = "androidx.appcompat:appcompat:${Version.APP_COMPAT}"
-    const val MATERIAL = "androidx.appcompat:appcompat:${Version.MATERIAL}"
+    const val MATERIAL = "com.google.android.material:material:${Version.MATERIAL}"
     const val CONSTRAINT_LAYOUT = "androidx.constraintlayout:constraintlayout:${Version.CONSTRAINT_LAYOUT}"
     const val COIL = "io.coil-kt:coil:${Version.COIL}"
     const val COIL_GIF = "io.coil-kt:coil-gif:${Version.COIL}"
@@ -26,7 +26,7 @@ object Deps {
     const val NAVIGATION_UI_KTX = "androidx.navigation:navigation-ui-ktx:${Version.NAVIGATION}"
     const val NAVIGATION_DYNAMIC_FEATURE = "androidx.navigation:navigation-dynamic-features-fragment:${Version.NAVIGATION}"
 
-
+    const val RETROFIT = "com.squareup.retrofit2:retrofit:${Version.RETROFIT}"
     const val RETROFIT_CONVERTOR = "com.squareup.retrofit2:converter-moshi:${Version.RETROFIT}"
     const val MOSHI_ADAPTER = "com.squareup.moshi:moshi-adapters:${Version.MOSHI}"
     const val OKHTTP = "com.squareup.okhttp3:okhttp:${Version.OKHTTP}"
